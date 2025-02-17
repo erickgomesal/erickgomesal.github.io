@@ -1,6 +1,24 @@
 // script.js
-let testemunhoAtual = 0;
-const testimonials = document.querySelectorAll(".testemunho");
+// Código Corrigido
+let indiceTestemunho = 0;
+const testemunhos = document.querySelectorAll('.testemunho');
+
+function mostrarTestemunho(novoIndice) {
+    // Garante que o índice esteja dentro dos limites
+    indiceTestemunho = (novoIndice + testemunhos.length) % testemunhos.length;
+    
+    testemunhos.forEach((test, index) => {
+        test.style.opacity = index === indiceTestemunho ? '1' : '0';
+    });
+}
+
+// Inicialização
+mostrarTestemunho(0);
+
+// Troca automática a cada 7 segundos
+setInterval(() => {
+    mostrarTestemunho(indiceTestemunho + 1);
+}, 7000);
 
 // Função do Carrossel
 function mudarTestemunho(n) {
@@ -189,23 +207,4 @@ window.addEventListener('load', () => {
         }, 500);
     }
 });
-// Código Corrigido
-let indiceTestemunho = 0;
-const testemunhos = document.querySelectorAll('.testemunho');
 
-function mostrarTestemunho(novoIndice) {
-    // Garante que o índice esteja dentro dos limites
-    indiceTestemunho = (novoIndice + testemunhos.length) % testemunhos.length;
-    
-    testemunhos.forEach((test, index) => {
-        test.style.opacity = index === indiceTestemunho ? '1' : '0';
-    });
-}
-
-// Inicialização
-mostrarTestemunho(0);
-
-// Troca automática a cada 7 segundos
-setInterval(() => {
-    mostrarTestemunho(indiceTestemunho + 1);
-}, 7000);
