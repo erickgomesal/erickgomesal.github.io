@@ -168,3 +168,24 @@ document.addEventListener("DOMContentLoaded", () => {
       parseInt(contador.textContent) + Math.floor(Math.random() * 2);
   }, 300000); // Atualiza a cada 5 minutos
 });
+// Função de scroll suave corrigida
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        window.history.pushState({}, '', `#${sectionId}`);
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Adicione este código para lidar com o carregamento inicial
+window.addEventListener('load', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+        setTimeout(() => {
+            scrollToSection(hash);
+        }, 500);
+    }
+});
