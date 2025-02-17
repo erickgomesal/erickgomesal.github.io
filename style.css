@@ -338,3 +338,15 @@ body.modo-noturno {
   align-items: center;
   gap: 10px;
 }
+/* Garanta que as seções estejam visíveis */
+section {
+    min-height: 100vh;
+    padding: 60px 20px;
+    scroll-margin-top: 80px; /* Ajuste para a altura do header */
+}
+
+/* Corrija o posicionamento do hero */
+.hero {
+    position: relative;
+    z-index: 1;
+}
