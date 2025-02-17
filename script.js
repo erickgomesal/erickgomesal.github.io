@@ -1,210 +1,82 @@
-// script.js
-// Código Corrigido
-let indiceTestemunho = 0;
+// Adicione o link do Font Awesome nas configurações do CodePen:
+// https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+
+// Sistema de Testemunhos
+let testemunhoAtual = 0;
 const testemunhos = document.querySelectorAll('.testemunho');
 
-function mostrarTestemunho(novoIndice) {
-    // Garante que o índice esteja dentro dos limites
-    indiceTestemunho = (novoIndice + testemunhos.length) % testemunhos.length;
-    
-    testemunhos.forEach((test, index) => {
-        test.style.opacity = index === indiceTestemunho ? '1' : '0';
-    });
+function mudarTestemunho(direcao) {
+    testemunhos[testemunhoAtual].classList.remove('ativo');
+    testemunhoAtual = (testemunhoAtual + direcao + testemunhos.length) % testemunhos.length;
+    testemunhos[testemunhoAtual].classList.add('ativo');
 }
 
-// Inicialização
-mostrarTestemunho(0);
-
-// Troca automática a cada 7 segundos
-setInterval(() => {
-    mostrarTestemunho(indiceTestemunho + 1);
-}, 7000);
-
-// Função do Carrossel
-function mudarTestemunho(n) {
-  testimonials[testemunhoAtual].classList.remove("ativo");
-  testemunhoAtual =
-    (testemunhoAtual + n + testimonials.length) % testimonials.length;
-  testimonials[testemunhoAtual].classList.add("ativo");
-}
-
-// Troca Automática
-setInterval(() => mudarTestemunho(1), 5000);
-
-// Newsletter
-document
-  .getElementById("form-newsletter")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-    const email = this.querySelector("input").value;
-    if (validateEmail(email)) {
-      alert("Recursos enviados para: " + email);
-      this.reset();
-    } else {
-      alert("Por favor, insira um e-mail válido.");
-    }
-  });
-
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-// Mostrar/Ocultar Oração
+// Sistema de Oração
 function mostrarOracao() {
-  document.getElementById("oracao").classList.toggle("hidden");
+    document.getElementById('oracao').classList.toggle('escondido');
 }
-// Novas Funções Interativas
-// Modo Noturno
-function toggleModoNoturno() {
-  document.body.classList.toggle("modo-noturno");
-  localStorage.setItem(
-    "modoNoturno",
-    document.body.classList.contains("modo-noturno")
-  );
-}
-
-// Progresso de Leitura
-window.addEventListener("scroll", () => {
-  const scrollTotal =
-    document.documentElement.scrollHeight - window.innerHeight;
-  const porcentagem = (window.scrollY / scrollTotal) * 100;
-  document.querySelector(".barra").style.width = porcentagem + "%";
-});
-
-// Quiz Bíblico
-function verificarResposta(botao, correta) {
-  const feedback = document.getElementById("feedback-quiz");
-  feedback.classList.remove("hidden");
-
-  if (correta) {
-    feedback.innerHTML =
-      "🎉 Resposta Correta! 'Pedro chorou amargamente...' (Lucas 22:62)";
-    feedback.style.color = "green";
-    botao.style.background = "#2ecc71";
-  } else {
-    feedback.innerHTML = "❌ Tente novamente! Leia Lucas 22:54-62";
-    feedback.style.color = "red";
-    botao.style.background = "#e74c3c";
-  }
-}
-
-// Caixa de Oração
-function enviarOracao() {
-  const texto = document.querySelector(".caixa-oracao textarea").value;
-  if (texto.length > 10) {
-    alert("Oração enviada! Deus te ouve sempre ❤️");
-    document.querySelector(".caixa-oracao").classList.remove("ativo");
-  } else {
-    alert("Escreva pelo menos 10 caracteres");
-  }
-}
-
-// Mostrar Caixa de Oração
-document.querySelector("nav").addEventListener("dblclick", () => {
-  document.querySelector(".caixa-oracao").classList.toggle("ativo");
-});
-
-// Carregar Modo Noturno
-if (localStorage.getItem("modoNoturno") === "true") {
-  document.body.classList.add("modo-noturno");
-}
-
-// Efeito de Digitação no Título
-const tituloHero = document.querySelector(".hero h1");
-new TypeIt(tituloHero, {
-  speed: 100,
-  lifeLike: true,
-  cursor: false
-}).go();
-// Sistema de Pedidos de Oração
-const formOracao = document.getElementById("form-oracao");
-const listaOracoes = document.getElementById("oracoes-recentes");
-
-function carregarOracoes() {
-  const oracoes = JSON.parse(localStorage.getItem("oracoes")) || [];
-  listaOracoes.innerHTML = oracoes
-    .slice(-5)
-    .reverse()
-    .map(
-      (oracao) => `
-        <div class="oracao-item">
-            <p>"${oracao.texto}"</p>
-            <small>${new Date(oracao.data).toLocaleDateString()}</small>
-        </div>
-    `
-    )
-    .join("");
-}
-
-formOracao.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const formData = new FormData(this);
-
-  const novaOracao = {
-    nome: formData.get("nome") || "Anônimo",
-    email: formData.get("email") || "",
-    texto: formData.get("texto"),
-    data: new Date().toISOString()
-  };
-
-  const oracoes = JSON.parse(localStorage.getItem("oracoes")) || [];
-  oracoes.push(novaOracao);
-  localStorage.setItem("oracoes", JSON.stringify(oracoes));
-
-  carregarOracoes();
-  this.reset();
-  alert("Seu pedido foi enviado! Nossa comunidade irá orar por você ❤️");
-});
 
 // Contador de Visitantes
 function atualizarContador() {
-  let visitas = localStorage.getItem("visitas") || 0;
-  visitas = parseInt(visitas) + 1;
-  localStorage.setItem("visitas", visitas);
+    let visitas = localStorage.getItem('visitas') || 0;
+    visitas = parseInt(visitas) + 1;
+    localStorage.setItem('visitas', visitas);
+    document.getElementById('contador').textContent = visitas;
+}
 
-  // Simulação de crescimento orgânico
-  const contador = document.getElementById("contador");
-  let contagem = parseInt(contador.textContent);
-  const incremento = Math.floor(Math.random() * 3) + 1; // Simula visitas em tempo real
+// Sistema de Pedidos de Oração
+document.getElementById('formOracao').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const texto = this.querySelector('textarea').value;
+    const pedidos = JSON.parse(localStorage.getItem('pedidosOracao')) || [];
+    
+    pedidos.unshift({
+        texto: texto,
+        data: new Date().toLocaleString()
+    });
 
-  const intervalo = setInterval(() => {
-    contagem += incremento;
-    contador.textContent = contagem;
-    if (contagem >= visitas) clearInterval(intervalo);
-  }, 100);
+    localStorage.setItem('pedidosOracao', JSON.stringify(pedidos.slice(0, 5)));
+    this.reset();
+    carregarPedidos();
+});
+
+function carregarPedidos() {
+    const pedidos = JSON.parse(localStorage.getItem('pedidosOracao')) || [];
+    document.getElementById('oracoesRecentes').innerHTML = pedidos
+        .map(pedido => `
+            <div class="pedido-item">
+                <p>${pedido.texto}</p>
+                <small>${pedido.data}</small>
+            </div>
+        `).join('');
+}
+
+// Sistema de Newsletter
+document.getElementById('formNewsletter').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = this.querySelector('input').value;
+    if (validateEmail(email)) {
+        alert('Inscrição confirmada! Verifique seu e-mail 📧');
+        this.reset();
+    }
+});
+
+function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 // Inicialização
-document.addEventListener("DOMContentLoaded", () => {
-  carregarOracoes();
-  atualizarContador();
-
-  // Atualização periódica do contador
-  setInterval(() => {
-    const contador = document.getElementById("contador");
-    contador.textContent =
-      parseInt(contador.textContent) + Math.floor(Math.random() * 2);
-  }, 300000); // Atualiza a cada 5 minutos
-});
-// Função de scroll suave corrigida
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        window.history.pushState({}, '', `#${sectionId}`);
-        section.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+document.addEventListener('DOMContentLoaded', () => {
+    atualizarContador();
+    carregarPedidos();
+    setInterval(() => mudarTestemunho(1), 7000);
+    
+    // Scroll Suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({ behavior: 'smooth' });
         });
-    }
-}
-
-// Adicione este código para lidar com o carregamento inicial
-window.addEventListener('load', () => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        setTimeout(() => {
-            scrollToSection(hash);
-        }, 500);
-    }
+    });
 });
-
