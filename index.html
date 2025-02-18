@@ -1,197 +1,70 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurados Pela Graça</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head><!-- Adicione antes do </body> -->
-<div class="interactive-elements">
-  <!-- Botão de Modo Noturno -->
-  <button class="modo-noturno" onclick="toggleModoNoturno()">🌙</button>
-
-  <!-- Progresso de Leitura -->
-  <div class="progresso-leitura">
-    <div class="barra"></div>
-  </div>
-</div>
-
-<!-- Novo Elemento: Quiz Bíblico -->
-<section class="quiz card">
-  <h2>📚 Quiz da Restauração</h2>
-  <div id="pergunta-quiz">
-    <p>Quem foi restaurado após negar Jesus 3 vezes?</p>
-    <div class="opcoes">
-      <button onclick="verificarResposta(this, true)">Pedro</button>
-      <button onclick="verificarResposta(this, false)">Judas</button>
-      <button onclick="verificarResposta(this, false)">Tomé</button>
-    </div>
-  </div>
-  <div id="feedback-quiz" class="hidden"></div>
-</section>
-
-<!-- Novo: Caixa de Oração Interativa -->
-<div class="caixa-oracao">
-  <textarea placeholder="Escreva sua oração..."></textarea>
-  <button onclick="enviarOracao()">Enviar para Deus 🙏</button>
-</div>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurados Pela Graça</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-  <header class="hero">
     <nav>
-      <div class="logo">✝ Restaurados Pela Graça</div>
-      <div class="nav-links">
-        <a href="#meditacoes">Meditações</a>
-        <a href="#estudos">Estudos</a>
-        <a href="#testemunhos">Testemunhos</a>
-      </div>
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#estudos">Estudos</a></li>
+            <li><a href="#historias">Histórias de Transformação</a></li>
+            <li><a href="#oração">Pedido de Oração</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+        </ul>
     </nav>
 
-    <div class="hero-content">
-      <h1>Como Deus Transforma a Dor em Novos Começos</h1>
-      <p class="versiculo-destaque">"Eis que faço novas todas as coisas" (Apocalipse 21:5)</p>
-    </div>
-  </header>
-
-  <main class="container">
-    <!-- Meditação Diária -->
-    <section id="meditacoes" class="meditacao-diaria card">
-      <div class="cabecalho-meditacao">
-        <span class="data">🗓️ 20 de Junho de 2024</span>
-        <h2><i class="fas fa-cross"></i> Força no Deserto</h2>
-      </div>
-      <div class="conteudo-meditacao">
-        <p class="versiculo">"O Senhor é [...] fortaleza na angústia" (Naum 1:7)</p>
-        <div class="reflexao">
-          <p>Deus não apenas nos acompanha nos desertos da vida, mas os usa para nos preparar...</p>
-          <button class="botao-reflexao" onclick="mostrarOracao()">Ver Oração</button>
-          <p id="oracao" class="hidden">Pai, ensina-me a encontrar força em Ti mesmo nas tempestades. Amém.</p>
-        </div>
-      </div>
+    <section id="inicio">
+        <h1>Restaurados Pela Graça</h1>
+        <p>🗓️ 20 de Junho de 2024</p>
+        <p>"O Senhor é \[...\] fortaleza na angústia" (Naum 1:7)</p>
+        <p>Deus não apenas nos acompanha nos desertos da vida, mas os usa para nos preparar...</p>
+        <p>Pai, ensina-me a encontrar força em Ti mesmo nas tempestades. Amém.</p>
     </section>
 
-    <!-- Estudos Bíblicos -->
-    <section id="estudos" class="grade-estudos">
-      <h2 class="titulo-secao">📚 Estudos Recentes</h2>
-      <div class="grid-estudos">
-        <article class="estudo">
-          <img src="https://images.unsplash.com/photo-1589471387966-2d0400a6d62f" alt="Bíblia aberta">
-          <div class="conteudo-estudo">
+    <section id="estudos">
+        <h2>📚 Estudos Recentes</h2>
+        <div class="estudo">
+            <img src="https://images.unsplash.com/photo-1589471387966-2d0400a6d62f" alt="Estudo 1">
             <h3>O Recomeço de Pedro</h3>
             <p>Como Jesus restaurou um líder após a negação</p>
-            <a href="#" class="botao-estudo">Ler Estudo →</a>
-          </div>
-        </article>
-
-        <article class="estudo">
-          <img src="https://images.unsplash.com/photo-1532012197267-3adc5d7e4a54" alt="Mãos em oração">
-          <div class="conteudo-estudo">
+            <a href="#">Ler Estudo →</a>
+        </div>
+        <div class="estudo">
+            <img src="https://images.unsplash.com/photo-1532012197267-3adc5d7e4a54" alt="Estudo 2">
             <h3>Cura Emocional</h3>
             <p>7 passos bíblicos para feridas internas</p>
-            <a href="#" class="botao-estudo">Ler Estudo →</a>
-          </div>
-        </article>
-      </div>
+            <a href="#">Ler Estudo →</a>
+        </div>
     </section>
 
-    <!-- Testemunhos -->
-    <section id="testemunhos" class="carrossel-testemunhos">
-      <h2 class="titulo-secao">🌟 Histórias de Transformação</h2>
-      <div class="carrossel-container">
-        <div class="testemunho ativo">
-          <blockquote>
-            "Deus restaurou meu casamento quando tudo parecia perdido!"
-            <cite>- Ana, 34 anos</cite>
-          </blockquote>
-        </div>
-        <div class="testemunho">
-          <blockquote>
-            "Encontrei propósito após 10 anos de depressão"
-            <cite>- Carlos, 42 anos</cite>
-          </blockquote>
-        </div>
-        <div class="controles">
-          <button class="controle anterior" onclick="mudarTestemunho(-1)">‹</button>
-          <button class="controle proximo" onclick="mudarTestemunho(1)">›</button>
-        </div>
-      </div>
-    </section><!-- Adicione na seção de testemunhos -->
-    <section class="pedido-oracao card">
-      <h2>✉️ Envie Seu Pedido de Oração</h2>
-      <form id="form-oracao">
-        <input type="text" placeholder="Seu nome (opcional)">
-        <input type="email" placeholder="E-mail (opcional)">
-        <textarea placeholder="Escreva seu pedido de oração..." required></textarea>
-        <button type="submit">Enviar Pedido 🙏</button>
-      </form>
-      <div class="lista-oracoes">
-        <h3>Últimos Pedidos:</h3>
-        <div id="oracoes-recentes"></div>
-      </div>
+    <section id="historias">
+        <h2>🌟 Histórias de Transformação</h2>
+        <blockquote>"Deus restaurou meu casamento quando tudo parecia perdido!" - Ana, 34 anos</blockquote>
+        <blockquote>"Encontrei propósito após 10 anos de depressão" - Carlos, 42 anos</blockquote>
     </section>
 
-    <!-- No footer, adicione: -->
-    <div class="contador-visitantes">
-      <i class="fas fa-users"></i>
-      <span id="contador">0</span> pessoas já buscaram restauração aqui
-    </div>
+    <section id="oração">
+        <h2>✉️ Envie Seu Pedido de Oração</h2>
+        <p>Últimos Pedidos:</p>
+        <p>0 pessoas já buscaram restauração aqui</p>
+        <form>
+            <input type="text" placeholder="Nome">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Mensagem"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter card">
-      <div class="conteudo-newsletter">
+    <section id="recursos">
         <h2>📩 Receba Recursos Gratuitos!</h2>
         <p>Baixe nosso e-book: <strong>"7 Dias de Restauração Espiritual"</strong></p>
-        <form id="form-newsletter">
-          <input type="email" placeholder="Seu melhor e-mail" required>
-          <button type="submit">Quero Receber! <i class="fas fa-download"></i></button>
-        </form>
-      </div>
+        <button>Baixar e-book</button>
     </section>
-  </main>
 
-  <footer>
-    <div class="footer-conteudo">
-      <p>© 2025 Restaurados Pela Graça</p>
-      <div class="redes-sociais">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
-<script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/typeit.min.js"></script>
-<div class="floating-icon">🙏</div>
-<section id="projetos">
-  <h2>Projetos</h2>
-  <div class="projetos-lista">
-    <!-- Projeto 1 -->
-    <div class="projeto">
-      <img 
-        src="assets/imagens/projeto1.jpg" 
-        alt="Interface do TechBlog: site de notícias de tecnologia"
-      >
-      <h3>TechBlog</h3>
-      <p>Tecnologias: HTML, CSS, JavaScript e API REST</p>
-      <p>Blog com sistema de comentários e login de usuários.</p>
-      <a href="https://github.com/seuuser/techblog" target="_blank">Código no GitHub</a>
-    </div>
-
-    <!-- Projeto 2 -->
-    <div class="projeto">
-      <img 
-        src="assets/imagens/projeto2.jpg" 
-        alt="Dashboard do FinançasPessoais: gráficos de gastos"
-      >
-      <h3>FinançasPessoais</h3>
-      <p>Tecnologias: React, Chart.js e Firebase</p>
-      <p>Aplicativo para controle financeiro com relatórios.</p>
-      <a href="https://github.com/seuuser/financas" target="_blank">Ver Demonstração</a>
-    </div>
-  </div>
-</section>
