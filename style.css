@@ -337,4 +337,39 @@ body.modo-noturno {
   display: flex;
   align-items: center;
   gap: 10px;
+}/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  /* Ajusta o grid de projetos para 1 coluna */
+  .projetos-lista {
+    grid-template-columns: 1fr;
+  }
+
+  /* Menu em coluna para mobile */
+  header nav ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  /* Aumenta área de toque dos links */
+  nav a {
+    padding: 10px;
+  }
+}
+
+/* ===== ESTILO DO BOTÃO ===== */
+button[type="submit"] {
+  background: #3498db;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.2s, background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #2980b9;
+  transform: scale(1.05);
 }
