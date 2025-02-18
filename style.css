@@ -1,3 +1,67 @@
+/* Adicione no início do arquivo */
+:root {
+    --cor-primaria: #2c3e50;
+    --cor-secundaria: #34495e;
+    --fonte-titulo: 'Merriweather', serif;
+}
+
+/* Adicione no <head> do HTML */
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+/* Atualize as seguintes seções */
+.hero {
+    background: linear-gradient(rgba(40,62,80,0.9), rgba(40,62,80,0.9)),
+                url('https://images.unsplash.com/photo-1589471387966-2d0400a6d62f');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nav-container {
+    padding: 1rem 5%;
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    margin: 1rem auto;
+    width: 90%;
+}
+
+.hero-content h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 2.8rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.estudo-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.estudo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Melhoria na responsividade */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .estudo-imagem {
+        height: 150px;
+    }
+}
 /* Reset e Configurações Gerais */
 * {
     margin: 0;
