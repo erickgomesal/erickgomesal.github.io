@@ -304,4 +304,23 @@ textarea {
     .estudos-grid {
         grid-template-columns: 1fr;
     }
+}/* Adicione estas transições */
+.animated {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animated.visible {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+/* Melhore o carrossel */
+.carrossel-container {
+    perspective: 1000px;
+}
+
+.testemunho {
+    transform-style: preserve-3d;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
