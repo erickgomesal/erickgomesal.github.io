@@ -4,126 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurados Pela Graça</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="hero">
-        <nav class="nav-container">
-            <div class="logo">✝ Restaurados Pela Graça</div>
-            <div class="nav-links">
-                <a href="#meditacoes">Meditações</a>
-                <a href="#estudos">Estudos</a>
-                <a href="#testemunhos">Testemunhos</a>
-            </div>
+    <header>
+        <h1>Restaurados Pela Graça</h1>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#estudos">Estudos</a></li>
+                <li><a href="#pedidos">Pedidos de Oração</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </nav>
-        
-        <div class="hero-content animated">
-            <h1>Como Deus Transforma a Dor em Novos Começos</h1>
-            <p class="versiculo-destaque">"Eis que faço novas todas as coisas" (Apocalipse 21:5)</p>
-        </div>
     </header>
 
-    <main class="container">
-        <!-- Meditação Diária -->
-        <section id="meditacoes" class="meditacao-card animated">
-            <div class="cabecalho-meditacao">
-                <span class="data">🗓️ 20 de Junho de 2024</span>
-                <h2 class="section-title"><i class="fas fa-cross"></i> Força no Deserto</h2>
-            </div>
-            <div class="conteudo-meditacao">
-                <p class="versiculo">"O Senhor é [...] fortaleza na angústia" (Naum 1:7)</p>
-                <div class="reflexao">
-                    <p>Deus não apenas nos acompanha nos desertos da vida, mas os usa para nos preparar...</p>
-                    <button class="botao botao-primario" onclick="mostrarOracao()">Ver Oração</button>
-                    <p id="oracao" class="escondido">Pai, ensina-me a encontrar força em Ti mesmo nas tempestades. Amém.</p>
-                </div>
-            </div>
-        </section>
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>Somos uma comunidade dedicada a compartilhar a Palavra de Deus e ajudar na restauração espiritual.</p>
+    </section>
 
-        <!-- Estudos Bíblicos -->
-        <section id="estudos" class="animated">
-            <h2 class="section-title">📚 Estudos Recentes</h2>
-            <div class="estudos-grid">
-                <article class="estudo-card">
-                    <img src="https://images.unsplash.com/photo-1589471387966-2d0400a6d62f" alt="Bíblia aberta" class="estudo-imagem">
-                    <div class="estudo-conteudo">
-                        <h3>O Recomeço de Pedro</h3>
-                        <p>Como Jesus restaurou um líder após a negação</p>
-                        <button class="botao botao-primario">Ler Estudo →</button>
-                    </div>
-                </article>
-
-                <article class="estudo-card">
-                    <img src="https://images.unsplash.com/photo-1532012197267-3adc5d7e4a54" alt="Mãos em oração" class="estudo-imagem">
-                    <div class="estudo-conteudo">
-                        <h3>Cura Emocional</h3>
-                        <p>7 passos bíblicos para feridas internas</p>
-                        <button class="botao botao-primario">Ler Estudo →</button>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- Testemunhos -->
-        <section id="testemunhos" class="animated">
-            <h2 class="section-title">🌟 Histórias de Transformação</h2>
-            <div class="carrossel-container">
-                <div class="testemunho ativo">
-                    <blockquote>
-                        "Deus restaurou meu casamento quando tudo parecia perdido!"
-                        <cite>- Ana, 34 anos</cite>
-                    </blockquote>
-                </div>
-                <div class="testemunho">
-                    <blockquote>
-                        "Encontrei propósito após 10 anos de depressão"
-                        <cite>- Carlos, 42 anos</cite>
-                    </blockquote>
-                </div>
-                <div class="carrossel-controles">
-                    <button class="botao" onclick="mudarTestemunho(-1)">‹</button>
-                    <button class="botao" onclick="mudarTestemunho(1)">›</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter -->
-        <section class="newsletter-section animated">
-            <div class="newsletter-form">
-                <h2>📩 Receba Recursos Gratuitos!</h2>
-                <form id="formNewsletter">
-                    <input type="email" placeholder="Seu melhor e-mail" required>
-                    <button type="submit" class="botao botao-primario">Quero Receber! <i class="fas fa-download"></i></button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Pedido de Oração -->
-        <section class="pedido-oracao animated">
-            <h2 class="section-title">✉️ Pedidos de Oração</h2>
-            <form id="formOracao">
-                <textarea placeholder="Escreva seu pedido de oração..." required></textarea>
-                <button type="submit" class="botao botao-primario">Enviar Pedido 🙏</button>
-            </form>
-            <div class="lista-oracoes">
-                <h3>Últimos Pedidos:</h3>
-                <div id="oracoesRecentes"></div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="contador-visitantes">
-            <i class="fas fa-users"></i> 
-            <span id="contador">0</span> pessoas buscando restauração
+    <section id="estudos">
+        <h2>Estudos Bíblicos</h2>
+        <div class="estudo">
+            <h3>O Recomeço de Pedro</h3>
+            <p>Descubra como Pedro superou suas falhas e foi restaurado por Jesus.</p>
         </div>
-        <div class="redes-sociais">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <div class="estudo">
+            <h3>Cura Emocional</h3>
+            <p>Encontre conforto e cura na palavra de Deus.</p>
         </div>
-        <p>© 2024 Restaurados Pela Graça</p>
+    </section>
+
+    <section id="pedidos">
+        <h2>Pedidos de Oração</h2>
+        <form id="form-pedido">
+            <input type="text" id="nome" placeholder="Seu nome" required>
+            <textarea id="pedido" placeholder="Seu pedido de oração" required></textarea>
+            <button type="submit">Enviar Pedido</button>
+        </form>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Email: contato@restauradospelagraca.com</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Restaurados Pela Graça. Todos os direitos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
