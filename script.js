@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("form-pedido");
+    const btnReceber = document.getElementById("btn-receber");
     
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -16,4 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
         
         form.reset();
     });
+    
+    if (btnReceber) {
+        btnReceber.addEventListener("click", function () {
+            alert("Obrigado! Em breve você receberá novidades.");
+        });
+    }
 });
