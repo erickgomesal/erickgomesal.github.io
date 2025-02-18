@@ -1,3 +1,38 @@
+// Adicione no início do arquivo
+function carregarRecursos() {
+    // Pré-carregar imagens
+    const imagens = [
+        'https://images.unsplash.com/photo-1589471387966-2d0400a6d62f',
+        'https://images.unsplash.com/photo-1532012197267-3adc5d7e4a54'
+    ];
+    
+    imagens.forEach(src => {
+        new Image().src = src;
+    });
+}
+
+// Modifique a função de carrossel
+function mudarTestemunho(direcao) {
+    testemunhos[testemunhoAtual].classList.remove('ativo');
+    testemunhoAtual = (testemunhoAtual + direcao + testemunhos.length) % testemunhos.length;
+    testemunhos[testemunhoAtual].classList.add('ativo');
+}
+
+// Adicione no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    carregarRecursos();
+    
+    // Intersection Observer para animações
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animated').forEach(el => observer.observe(el));
+});
 // Sistema de Testemunhos
 let testemunhoAtual = 0;
 const testemunhos = document.querySelectorAll('.testemunho');
